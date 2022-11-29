@@ -15,7 +15,6 @@ const Hero: React.FC<Props> = ({ blok }) => {
     justify-center
     p-9
     my-6
-    rounded-[5px]
     overflow-hidden ${
       blok.layout === "constrained" ? "container mx-auto" : ""
     }`}
@@ -28,6 +27,7 @@ const Hero: React.FC<Props> = ({ blok }) => {
         <Image
           src={blok.background_image.filename}
           alt={blok.background_image.alt}
+          className="object-cover"
           fill
         />
       </div>

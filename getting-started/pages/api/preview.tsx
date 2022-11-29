@@ -11,7 +11,8 @@ export default async function handlePreviewRequests(
 ) {
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
-  const { secret, slug } = req.query;
+  const { secret } = req.query;
+  let { slug } = req.query;
 
   console.log("secret", secret, slug, "Local", NEXT_PREVIEW_TOKEN);
 
@@ -31,12 +32,16 @@ export default async function handlePreviewRequests(
       }
     }
   `;
+
+  if (!(slug as string).startsWith("blog")) {
+    slug = "pages/" + slug;
+  }
   const {
     PageItems: {
       items: [data],
     },
   } = await StoryblokApi.request(query, {
-    by_slugs: `pages/${slug}`,
+    by_slugs: `${slug}`,
   });
 
   // If the slug doesn't exist prevent preview mode from being enabled

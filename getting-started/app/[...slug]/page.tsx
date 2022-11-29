@@ -13,19 +13,23 @@ const StoryblokApi = createStoryClient(false);
 export default async function DynamicPage({ params, ...rest }: Props) {
   console.log("params", params);
   const { slug } = params;
-  const pageSlug = slug === undefined ? "home" : slug[0];
+  let pageSlug:string = slug === undefined ? "home" : slug[0];
   console.log("pageSlug", pageSlug);
 
   let sbParams = {
     version: "draft", // or 'published'
   };
 
+  if (!pageSlug.startsWith("blog")) {
+    pageSlug = "pages/" + pageSlug;
+  }
+
   const {
     PageItems: {
       items: [data],
     },
   } = await StoryblokApi.request(PageQuery, {
-    by_slugs: `pages/${pageSlug}`,
+    by_slugs: `${pageSlug}`,
   });
 
   return <DynamicPageWrapper story={data} />;

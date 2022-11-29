@@ -9,7 +9,7 @@ interface Props {
 const Feature: React.FC<Props> = ({ blok }) => (
   <div className="column feature" {...storyblokEditable(blok)}>
     <div className="p-6">
-      <div className="relative w-48 mb-8 h-48 md:h-36 rounded-xl">
+      <div className="relative w-full mb-8 h-48 md:h-36 rounded-xl">
         <Image
           src={blok.image?.filename}
           className="object-center object-cover"
