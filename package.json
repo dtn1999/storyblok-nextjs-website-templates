@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "storyblok-rich-text-react-renderer": "^2.6.1"
+  }
+}
