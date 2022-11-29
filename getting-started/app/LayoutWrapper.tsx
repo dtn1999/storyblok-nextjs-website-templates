@@ -9,6 +9,9 @@ import HeaderMenu from "../components/HeaderMenu";
 import MenuLink from "../components/MenuLink";
 import Hero from "../components/Hero";
 import React from "react";
+import Layout from "../components/Layout";
+import { gql } from "graphql-request";
+import { createStoryClient } from "../lib";
 
 const components = {
   feature: Feature,
@@ -29,8 +32,14 @@ storyblokInit({
 
 interface Props {
   children: React.ReactNode;
+  blok: any;
 }
 
-export const LayoutWrapper: React.FC<Props> = ({ children }) => {
-  return <React.Fragment>{children}</React.Fragment>;
+export const LayoutWrapper: React.FC<Props> = ({ children, blok }) => {
+  return (
+    <React.Fragment>
+      <Config blok={blok} />
+      {children}
+    </React.Fragment>
+  );
 };

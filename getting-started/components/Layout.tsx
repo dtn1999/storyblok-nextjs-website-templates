@@ -7,11 +7,10 @@ interface Props {
   children: React.ReactNode;
 }
 const Layout: React.FC<Props> = ({ children, story }) => (
-  <div>
-    <Config blok={story.content} />
+  <React.Fragment>
     {children}
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 export default Layout;
