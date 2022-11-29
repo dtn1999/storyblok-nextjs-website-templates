@@ -12,6 +12,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { createStoryClient } from "../lib";
 import { PageQuery } from "../lib/graphql/page";
 import { gql } from "graphql-request";
+import Layout from "../components/Layout";
 
 const StoryblokApi = createStoryClient(false);
 
@@ -33,8 +34,9 @@ export const DynamicPage: NextPage<Props> = ({ story, preview }) => {
       <header>
         <h1>{story ? story.name : "My Site"}</h1>
       </header>
-
-      <StoryblokComponent blok={editableContent.content} />
+      <Layout>
+        <StoryblokComponent blok={editableContent.content} />
+      </Layout>
     </div>
   );
 };
