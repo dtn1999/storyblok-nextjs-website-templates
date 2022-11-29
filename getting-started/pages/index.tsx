@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { getStoryblokApi } from "@storyblok/react";
 import { NextPage } from "next";
+import { createStoryClient } from "../lib"
 
 interface Props {
   story: any;
@@ -36,13 +36,14 @@ export async function getStaticProps() {
     version: "draft", // or 'published'
   };
 
-  const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+  const storyblokApi = createStoryClient(false);
+
+  const data = {};
 
   return {
     props: {
-      story: data ? data.story : false,
-      key: data ? data.story.id : false,
+      story: data ,
+      key: data ,
     },
     revalidate: 3600, // revalidate every hour
   };
