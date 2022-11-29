@@ -30,10 +30,6 @@ export const DynamicPage: NextPage<Props> = ({ story, preview }) => {
         <title>{story ? story.name : "My Site"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header>
-        <h1>{story ? story.name : "My Site"}</h1>
-      </header>
       <Layout>
         <StoryblokComponent blok={editableContent.content} />
       </Layout>

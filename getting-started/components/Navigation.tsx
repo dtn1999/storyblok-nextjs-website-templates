@@ -1,11 +1,9 @@
-import React from "react"
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-interface Props {
-
-}
-const Navigation:React.FC<Props> = () => {
+interface Props {}
+const Navigation: React.FC<Props> = () => {
   const [openMenu, setOpenMenu] = React.useState(false);
 
   return (
@@ -13,20 +11,24 @@ const Navigation:React.FC<Props> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link href="/">
-              <a>
-                <span className="sr-only">Storyblok</span>
-                <Image
-                  className="h-20 w-auto sm:h-10 hidden sm:block"
-                  src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
-                  alt="Storyblok"
-                />
-                <Image
-                  className="h-20 w-auto sm:h-10 sm:hidden"
-                  src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
-                  alt="Storyblok"
-                />
-              </a>
+            <Link className="sr-only" href="/">
+              <>
+                <span>Storyblok</span>
+                <div className="h-20 w-auto sm:h-10 hidden sm:block">
+                  <Image
+                    src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
+                    fill
+                    alt="Storyblok"
+                  />
+                </div>
+                <div className="h-20 w-auto sm:h-10 sm:hidden">
+                  <Image
+                    src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
+                    fill
+                    alt="Storyblok"
+                  />
+                </div>
+              </>
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -56,20 +58,23 @@ const Navigation:React.FC<Props> = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <Link href="/about">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                About
-              </a>
+            <Link
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              href="/about"
+            >
+              About
             </Link>
-            <Link href="/blog">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Blog
-              </a>
+            <Link
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              href="/blog"
+            >
+              Blog
             </Link>
-            <Link href="/services">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Services
-              </a>
+            <Link
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              href="/services"
+            >
+              Services
             </Link>
           </div>
         </div>
@@ -83,10 +88,10 @@ const Navigation:React.FC<Props> = () => {
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
-                <div>
+                <div className="h-8 w-auto">
                   <Image
-                    className="h-8 w-auto"
                     src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
+                    fill
                     alt="Storyblok"
                   />
                 </div>
@@ -118,28 +123,31 @@ const Navigation:React.FC<Props> = () => {
               </div>
               <div className="mt-6">
                 <nav className="grid gap-y-8">
-                  <Link href="/about">
-                    <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                      {/* <!-- Heroicon name: outline/chart-bar --> */}
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        About
-                      </span>
-                    </a>
+                  <Link
+                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                    href="/about"
+                  >
+                    {/* <!-- Heroicon name: outline/chart-bar --> */}
+                    <span className="ml-3 text-base font-medium text-gray-900">
+                      About
+                    </span>
                   </Link>
-                  <Link href="/blog">
-                    <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                      {/* <!-- Heroicon name: outline/cursor-click --> */}
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        Blog
-                      </span>
-                    </a>
+                  <Link
+                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                    href="/blog"
+                  >
+                    {/* <!-- Heroicon name: outline/cursor-click --> */}
+                    <span className="ml-3 text-base font-medium text-gray-900">
+                      Blog
+                    </span>
                   </Link>
-                  <Link href="/services">
-                    <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        Services
-                      </span>
-                    </a>
+                  <Link
+                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                    href="/services"
+                  >
+                    <span className="ml-3 text-base font-medium text-gray-900">
+                      Services
+                    </span>
                   </Link>
                 </nav>
               </div>
