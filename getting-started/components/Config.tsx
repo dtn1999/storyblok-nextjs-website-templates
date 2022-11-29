@@ -26,13 +26,16 @@ const Config: React.FC<Props> = ({ blok }) => {
               </div>
             </Link>
           </div>
+          {/** 
+           * 
           {blok.header_menu.map((nestedBlok: any) => (
-            <StoryblokComponent
+              <StoryblokComponent
               className=""
               blok={nestedBlok}
               key={nestedBlok._uid}
             />
           ))}
+        */}
         </div>
       </div>
     </div>
