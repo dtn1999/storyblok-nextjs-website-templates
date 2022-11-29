@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ["a.storyblok.com"],
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 };
 
 module.exports = nextConfig;
