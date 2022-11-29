@@ -2,13 +2,16 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 import { NextPage } from "next";
-import { createStoryClient } from "../lib"
+import { createStoryClient } from "../lib";
+import { PageQuery } from "../lib/graphql/page";
+import { StoryblokComponent, useStoryblokState } from "@storyblok/react";
 
 interface Props {
   story: any;
 }
 
-export const HomePage: NextPage<Props> = (props) => {
+export const HomePage: NextPage<Props> = ({ story }) => {
+  const editableStory = useStoryblokState<any>(story);
   return (
     <div className={styles.container}>
       <Head>
@@ -17,9 +20,9 @@ export const HomePage: NextPage<Props> = (props) => {
       </Head>
 
       <header>
-        <h1>{props.story ? props.story.name : "My Site"}</h1>
+        <h1 className="bg-red-300">{"My Site"}</h1>
       </header>
-
+      <StoryblokComponent blok={editableStory.content} />
       <main></main>
     </div>
   );
@@ -36,14 +39,22 @@ export async function getStaticProps() {
     version: "draft", // or 'published'
   };
 
-  const storyblokApi = createStoryClient(false);
+  const StoryblokApi = createStoryClient(false);
 
-  const data = {};
+  const {
+    PageItems: {
+      items: [data],
+    },
+  } = await StoryblokApi.request(PageQuery, {
+    by_slugs: "home",
+  });
 
+  console.log("data", data);
   return {
     props: {
-      story: data ,
-      key: data ,
+      story: {
+        ...data,
+      },
     },
     revalidate: 3600, // revalidate every hour
   };

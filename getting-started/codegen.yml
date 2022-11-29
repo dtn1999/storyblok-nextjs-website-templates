@@ -1,0 +1,17 @@
+overwrite: true
+
+schema: https://gapi.storyblok.com/v1/api
+
+documents: "./lib/graphql/**/*.ts"
+
+generates:
+  ./types/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+    config:
+      withHooks: true
+
+hooks:
+  afterAllFileWrite:
+    - eslint --fix
