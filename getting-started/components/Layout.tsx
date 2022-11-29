@@ -1,13 +1,14 @@
 import React from "react";
-import Navigation from "./Navigation";
 import Footer from "./Footer";
+import Config from "./Config";
 
 interface Props {
+  story: any;
   children: React.ReactNode;
 }
-const Layout: React.FC<Props> = ({ children }) => (
+const Layout: React.FC<Props> = ({ children, story }) => (
   <div>
-    <Navigation />
+    <Config blok={story.content} />
     {children}
     <Footer />
   </div>
