@@ -22,7 +22,13 @@ interface Props {
 }
 
 export const DynamicPage: NextPage<Props> = ({ story, preview }) => {
-  const editableContent = useStoryblokState<any>(story as any, {}, preview);
+  const editableContent = useStoryblokState<any>(
+    story as any,
+    {
+      resolveRelations: ["popular-articles.articles"],
+    },
+    preview
+  );
 
   return (
     <div className={styles.container}>
@@ -30,7 +36,7 @@ export const DynamicPage: NextPage<Props> = ({ story, preview }) => {
         <title>{story ? story.name : "My Site"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <Layout story={story}>
         <StoryblokComponent blok={editableContent.content} />
       </Layout>
     </div>
