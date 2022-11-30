@@ -43,7 +43,7 @@ export default async function RootLayout({
   const { content } = await fetchConfig();
   return (
     <html lang="en">
-      <body>
+      <body className="lg:mx-[200px] mx-[100px]">
         <LayoutWrapper blok={content}>{children}</LayoutWrapper>
       </body>
       <Footer />
